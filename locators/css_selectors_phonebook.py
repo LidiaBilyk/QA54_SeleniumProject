@@ -40,12 +40,57 @@ try:
     root_1 = driver.find_element(By.CSS_SELECTOR, "#root")
     root_2 = driver.find_elements(By.ID, "root")
 
-    # by attribute
-    name = driver.find_element(By.CSS_SELECTOR,'input[name="email"]')
-    email = driver.find_element(By.CSS_SELECTOR,"input[name=\"email\"]")
+    # # by attribute
+    # name = driver.find_element(By.CSS_SELECTOR,'input[name="email"]')
+    # email = driver.find_element(By.CSS_SELECTOR,"input[name=\"email\"]")
+    #
+    # subtitle = driver.find_element(By.CSS_SELECTOR,'[class*="Type your data and hit Yalla!"]')
+    # start_sub = driver.find_element(By.CSS_SELECTOR,"")
+    #
 
-    subtitle = driver.find_element(By.CSS_SELECTOR,'[class*="Type your data and hit Yalla!"]')
-    start_sub = driver.find_element(By.CSS_SELECTOR,"")
+
+    #linkText @ partialLinkTest
+    home = driver.find_element(By.LINK_TEXT, "HOME")
+    home1 = driver.find_element(By.PARTIAL_LINK_TEXT, "OME")
+
+
+
+    div3 = driver.find_element(By.XPATH, "//div")
+
+    h1_3 = driver.find_element(By.XPATH, "//h1")
+
+    input1_1 = driver.find_element(By.XPATH, "//input")
+
+    a_list_2 = driver.find_elements(By.XPATH, "//a")
+
+    container_2 = driver.find_element(By.XPATH, "//*[@class='container']")
+
+    nav_bar_2 = driver.find_element(By.XPATH, "//*[@class = 'active']")
+
+    login_2 = driver.find_element(By.XPATH, "//*[@class = 'login_login__3EHKB']")
+
+    root_3 = driver.find_element(By.XPATH, "//*[@id = 'root']")
+
+    email_xpath = driver.find_element(By.XPATH, "//input[@name = 'email']")
+
+    login_button = driver.find_element(By.XPATH, "//button[text()='Login']")
+    login1_button = driver.find_element(By.XPATH, "//*[contains(text(),'Login')]")
+
+    input_3 = driver.find_element(By.XPATH, "//input[@placeholder='Email']")
+
+    #starts CSS
+    input_4 = driver.find_element(By.CSS_SELECTOR, "[placeholder^='Em']")
+    #starts XPath
+    input_4_1 = driver.find_element(By.XPATH, "//*[starts-with(@placeholder,'Em')]")
+    #ends CSS
+    input_4_2 = driver.find_element(By.CSS_SELECTOR, "[placeholder$='il']")
+    #ends (contains) XPath
+    input_4_3 = driver.find_element(By.XPATH, "//*[contains(@placeholder,'il')]")
+    #middle CSS
+    input5 = driver.find_element(By.CSS_SELECTOR, "[placeholder *= 'ai']")
+    #middle (contains) XPath
+    input_5_1 = driver.find_element(By.XPATH, "//*[contains(@placeholder,'il')]")
+
 
 finally:
     driver.quit()
