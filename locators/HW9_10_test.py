@@ -7,6 +7,7 @@ class TestDemoWebShopLocators:
     def setup_class(self):
         # Инициализация браузера на уровне класса
         self.driver = webdriver.Chrome()
+        self.driver.implicitly_wait(5)
         self.driver.get("https://demowebshop.tricentis.com/")
 
     def test_find_elements_strategies(self):
@@ -50,6 +51,26 @@ class TestDemoWebShopLocators:
         # Обязательные проверки для валидности теста
         assert search_box is not None, "Критическая ошибка: Поле поиска отсутствует на странице!"
         assert len(top_menu_items) == 7, f"Ожидалось 7 пунктов меню, но найдено {len(top_menu_items)}"
+
+        #HW10 - XPath
+
+        img = self.driver.find_element(By.XPATH, "//img[@title='Show details for Build your own expensive computer']")
+
+        add_to_cart_button = self.driver.find_elements(By.XPATH, "//input[@value='Add to cart']")
+        print(f"Add_to_cart_button count: {len(add_to_cart_button)}")
+        assert len(add_to_cart_button) == 6, f"Expected 6 matches, got {len(add_to_cart_button)}"
+
+        leftside_navbar = self.driver.find_elements(By.XPATH, "//*[@class = 'inactive']")
+        print(f"Leftside_navbar_inactive count:  {len(leftside_navbar)}")
+        assert len(leftside_navbar) == 8, f"Expected 8 matches, got {len(leftside_navbar)}"
+
+        input_search_store = self.driver.find_element(By.XPATH, "//input[@id = 'small-searchterms']")
+
+        header_menu_navbar_text = self.driver.find_element(By.XPATH, "//a[@href = '/computers']")
+        header_menu_navbar_text_contains = self.driver.find_element(By.XPATH, "//a[contains(text(), 'Computers')]")
+        print(f"Header navbar menu Computers: {header_menu_navbar_text.text}")
+        assert header_menu_navbar_text.text == "COMPUTERS"
+
 
     def teardown_class(self):
         # Гарантированное освобождение ресурсов
