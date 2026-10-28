@@ -72,6 +72,24 @@ class TestDemoWebShopLocators:
         assert header_menu_navbar_text.text == "COMPUTERS"
 
 
+
+        newsletter_email_input = self.driver.find_element(By.XPATH, "//*[@name = 'NewsletterEmail']")
+        search_input = self.driver.find_element(By.XPATH, "//*[@name = 'q']")
+        poll_answers = self.driver.find_elements(By.XPATH, "//*[@name = 'pollanswers-1']")
+        assert len(poll_answers) == 4, f"Expected 1 matches, got {len(poll_answers)}"
+
+        self.driver.get("https://telranedu.web.app/login")
+        div4 = self.driver.find_element(By.XPATH, "//h1/..")
+        div5 = self.driver.find_element(By.XPATH, "//h1/parent::*")  #same as div4
+
+        ancestor = self.driver.find_elements(By.XPATH, "//h1/ancestor::*")
+        for a in ancestor:
+            print(f"tag = {a.tag_name}")
+        ancestor1 = self.driver.find_elements(By.XPATH, "//h1/ancestor-or-self::*")
+        for a in ancestor1:
+            print(a.tag_name)
+
+
     def teardown_class(self):
         # Гарантированное освобождение ресурсов
         if self.driver:
